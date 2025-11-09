@@ -65,7 +65,6 @@ private:
         pools[used_pool_count].startPointer = pool_head_ptr;
         pools[used_pool_count].endPointer = pool_head_ptr + static_cast<size_t>(HEAP_SIZE) - 1;
         used_pool_count++;
-        std::cout<< "Used pool count: " << used_pool_count<<"\n";
     }
 
     void expandHeap(){                                                                  //expands the heap by HEAP_SIZE each time that it is called
