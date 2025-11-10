@@ -53,6 +53,7 @@ private:
         while (ptr){
             if(ptr->size_of_block >= size)
                 return true;
+            ptr = ptr->free_list_next;
         }
         return false;
     }
@@ -187,7 +188,7 @@ private:
     }
 
     void removeFromFreeList(EntryHeader* block_to_remove){                              //Will be called exclusively when block is certainly on the list
-        EntryHeader* prev_list_entry { block_to_remove->free_list_next };
+        EntryHeader* prev_list_entry { block_to_remove->free_list_prev };
         EntryHeader* next_list_entry { block_to_remove -> free_list_next };
         auto [block_bin, block_sub_bin] = findIndex(block_to_remove->size_of_block);
 
